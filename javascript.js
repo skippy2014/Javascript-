@@ -9,7 +9,7 @@ const dices4 =document.querySelector(".mogelijkeVieren");
 const dices5 =document.querySelector(".mogelijkeVijfen");
 const dices6 =document.querySelector(".mogelijkeZessen");
 const tok =document.querySelector(".toak");
-const carree=document.querySelector(".careeM ");
+const carree=document.querySelector(".careeM");
 const fullHouse=document.querySelector(".FHM");
 const ks=document.querySelector(".KSM");
 const gs=document.querySelector(".GSM");
@@ -18,8 +18,8 @@ const chance=document.querySelector(".chanceM");
 const totaleScore1=document.querySelector(".definitievePunten1");
 const totaleScore2=document.querySelector(".definitievePunten2");
 const bonus=document.querySelector(".puntenBonusDefinitief");
-const totalescoreTot=document.querySelector("definitievePunten");
-const totalescore1wb=document.querySelector('.bestAantalpunten1Definitief');
+const totalescore1wb=document.querySelector(".bestAantalpunten1Definitief");
+const Totaal=document.querySelector(".definitievePunten");
 const dice1=document.querySelector(".dobbelsteen1");
 const dice2=document.querySelector(".dobbelsteen2");
 const dice3=document.querySelector(".dobbelsteen3");
@@ -30,6 +30,8 @@ let dices=[0,0,0,0,0];
 let holdDices=[0,0,0,0,0];
 let rollsLeft= 3;
 const diceA = [dice1,dice2,dice3,dice4,dice5];
+let opeenvolgendeWaarde;
+let sameDices;
 
 let alleEenen=0;
 let alleTweeën=0;
@@ -49,6 +51,9 @@ let chanceS=0;
 let totaleScoreS=0;
 let score2=0;
 
+let oak3;
+let foak;
+
 function countNumbers(number,diceScore){
 let count=0; for(let i=0;i<dices.length; i++ ){
   if(dices[i]===number){
@@ -62,8 +67,8 @@ if(diceScore.classList.contains("possible")){
 }
 
 function toakFunction(diceScore){
-  let oak3 = false;
   const punten = dices[0]+dices[1]+dices[2]+dices[3]+dices[4];
+  let oak3 = false;
   for(let i=1; i<=6;i++){
     let sameDices=0;
     for(let j=0; j<5;j++){
@@ -72,19 +77,21 @@ function toakFunction(diceScore){
   
       }
       if(sameDices>=3){
-        oak3= true;
-      }
+        oak3 = true;
+      } 
     }
   }
-  if(oak3){
+  if(oak3 && tok.classList.contains('possible')){
     diceScore.textContent=punten;
     diceScore.value=true;
-  } else{diceScore.textContent=0}
+  } else if (!oak3 && tok.classList.contains('possible')){
+    diceScore.textContent = '0';
+  }
 }
 
 function careeFunction(diceScore){
-  let foak = false;
   const punten = dices[0]+dices[1]+dices[2]+dices[3]+dices[4];
+  let foak = false;
   for(let i=1; i<=6;i++){
     let sameDices=0;
     for(let j=0; j<5;j++){
@@ -97,45 +104,49 @@ function careeFunction(diceScore){
       }
     }
   }
-  if(foak){
+  if(foak && carree.classList.contains('possible')){
     diceScore.textContent=punten;
     diceScore.value=true;
-  } else{diceScore.textContent=0}
+  } else if (!foak && carree.classList.contains('possible')){
+    diceScore.textContent= '0';
+  }
 }
 
 function fullHouseFunction(diceScore){
-  const punten=25;
-  let fullHouseF=false;
-  let threeFH=false;
-  let twoFH=false;
- 
-  for(let i=1; i<=6;i++){
-    let sameDices=0;
-    for(let j=0; j<5;j++){
-      if(i==dices[j]){
-        sameDices++;
-  
+  const punten = 25;
+  let FullHouse = false;
+  let ThreeFH = false;
+  let TwoFH = false;
+  for(let i = 0;i <= 6; i++){ 
+      let sameDices = 0; 
+      for(let j = 0; j < 5; j++){ 
+          if(i == dices[j]){ 
+          sameDices++ 
+          } 
+         
       }
-      if(sameDices==3){
-        threeFH= true;
+      if(sameDices == 3){ 
+          ThreeFH = true;
       }
-    }
   }
-  for(let i=1; i<=6;i++){
-    let sameDices=0;
-    for(let j=0; j<5;j++){
-      if(i==dices[j]){
-        sameDices++;
-  
+  for(let i = 0;i <= 6; i++){ 
+      sameDices = 0; 
+      for(let j = 0; j < 5; j++){ 
+          if(i == dices[j]){ 
+              sameDices++ 
+          } 
+          
       }
-      if(sameDices==2){
-        twoFH= true;
+      if(sameDices == 2){ 
+          TwoFH = true;
       }
-    }
   }
-
-
-}
+  if(ThreeFH && TwoFH){FullHouse = true;}
+  if(FullHouse && fullHouse.classList.contains('possible')){
+      diceScore.textContent = `${punten}`;
+      diceScore.value = true;
+  } else if (!FullHouse && fullHouse.classList.contains('possible')) {diceScore.textContent = 0}
+};
 
 function KstraatFunction(diceScore){
   const punten=30;
@@ -148,14 +159,19 @@ function KstraatFunction(diceScore){
     for(let j=0; j<6; j++){
       if(straat[j]==1){
         opeenvolgendeWaarde++;
-        
-      } else {opeenvolgendeWaarde = 0;}
-    } if(opeenvolgendeWaarde>=4){Kstraat=true}
+        if(opeenvolgendeWaarde>=4){Kstraat=true;
+        break;}
+      } else {
+        opeenvolgendeWaarde = 0;
+        Kstraat = false;
+      }
+    }
   }
-  if (Kstraat){
+  if (Kstraat && ks.classList.contains('possible')){
     diceScore.textContent=punten; 
-    diceScore.value = true;
-  }
+  } else if (!Kstraat && ks.classList.contains('possible')) {
+    diceScore.textContent='0';
+}
 }
 
 function GstraatFunction(diceScore){
@@ -169,13 +185,18 @@ function GstraatFunction(diceScore){
     for(let j=0; j<6; j++){
       if(straat[j]==1){
         opeenvolgendeWaarde++;
-        
-      } else {opeenvolgendeWaarde = 0;}
-    } if(opeenvolgendeWaarde==5){Gstraat=true}
+        if(opeenvolgendeWaarde==5){Gstraat=true;
+        break;}
+      } else {
+        opeenvolgendeWaarde = 0;
+        Gstraat = false;
+      }
+    } 
   }
   if (Gstraat){
     diceScore.textContent=punten; 
-    diceScore.value = true;
+  } else {
+    diceScore = '0';
   }
 }
 
@@ -194,48 +215,18 @@ function yahtzeeFunction(diceScore){
       }
     }
   }
-  if(yahtzeeF){
+  if(yahtzeeF && yahtzee.classList.contains('possible')){
     diceScore.textContent=punten;
     diceScore.value=true;
-  } else{diceScore.textContent=0}
+  } else if (!yahtzeeF && yahtzee.classList.contains('possible')){diceScore.textContent=0}
 }
-
 
 function chanceFunction(diceScore){
   const punten = dices[0]+dices[1]+dices[2]+dices[3]+dices[4];
+  if (chance.classList.contains('possible')){
   diceScore.textContent=punten;
-   
+  } 
 
-}
-
-
-
-function deelscore1(score1,score2,score3,score4,score5,score6,tscore1){
-  tscore1 = score1+score2+score3+score4+score5+score6;
-  totaleScore1.textContent = tscore1;
-  return tscore1;
-}
-
-function bonuscheck(tscore1,bonus){
-  if(tscore1>=63){ bonus=35;
-  }
-  return bonus;
-}
-
-function deelscore2(score1,score2,score3,score4,score5,score6,tscore2){
-  tscore2 = score1+score2+score3+score4+score5+score6;
-  totaleScore2.textContent = tscore2;
-  return tscore2;
-}
-
-function deelscore1wb(bonus,tscore1){
-  tscore1=tscore1+bonus;
-  return tscore1;
-}
-
-function totaleScore(tscore1,tscore2,scoretot){
-scoretot = tscore1+tscore2;
-return scoretot;
 }
 
 function turnfunction(){
@@ -251,12 +242,7 @@ for(let z = 0; z < 5; z++){
 diceA[z].classList.add('notSelected'); 
 holdDices[z] = 0; 
 }
-
 }
-
-
-
-
 
 rollButton.addEventListener('click',function(){
   rollsLeft--;
@@ -270,8 +256,10 @@ rollButton.addEventListener('click',function(){
       diceA[i].src = `Dobbelsteen${dices[i]}.png`;
     }
   }
+
+
   countNumbers(1, dices1);
-  countNumbers(2,dices2);
+  countNumbers(2, dices2);
   countNumbers(3, dices3);
   countNumbers(4, dices4);
   countNumbers(5, dices5);
@@ -283,12 +271,18 @@ rollButton.addEventListener('click',function(){
   GstraatFunction(gs);
   yahtzeeFunction(yahtzee);
   chanceFunction(chance);
-  deelscore1(alleEenen,alleTweeën,alleDrieën,alleVieren,alleVijfen,alleZessen,score1);
-  bonuscheck(score1,bonusScore);
-  deelscore2(toak,caree,fullH,Kstraat,Gstraat,yahtzeeS,chanceS,score2);
-  deelscore1wb(bonusScore,score1);
-  totaleScore(score1,score2,totaleScoreS);
- });
+ totaleScore1.textContent = Number(dices1.textContent) + Number(dices2.textContent) + Number(dices3.textContent) + Number(dices4.textContent) + Number(dices5.textContent) + Number(dices6.textContent);
+  totaleScore2.textContent = Number(tok.textContent) + Number(carree.textContent) + Number(fullHouse.textContent) + Number(ks.textContent) + Number(gs.textContent) + Number(yahtzee.textContent) + Number(chance.textContent);
+  
+  if(Number(totaleScore1.textContent) >= 63){bonus.textContent = '35'} else {bonus.textContent = '0';}
+  totalescore1wb.textContent = Number(totaleScore1.textContent) + Number(bonus.textContent);
+  Totaal.textContent = Number(totalescore1wb.textContent) + Number(totaleScore2.textContent);
+ 
+ 
+  
+ 
+
+});
 
  dice1.addEventListener('click', () => {
   if(dice1.classList.contains('notSelected')){
@@ -351,42 +345,42 @@ rollButton.addEventListener('click',function(){
  
   }); 
   document.querySelector('.dobbelsteenpunten2').addEventListener('click', function(){ 
-  score2P1.classList.remove('possible'); 
-  score2P1.classList.add('confirm'); 
-  score2P1.classList.remove('mogelijkeTweeën'); 
+  dices2.classList.remove('possible'); 
+  dices2.classList.add('confirm'); 
+  dices2.classList.remove('mogelijkeTweeën'); 
   document.querySelector('.dobbelsteenpunten2').classList.remove('dobbelsteenpunten2'); 
   turnfunction();
  
   }); 
   document.querySelector('.dobbelsteenpunten3').addEventListener('click', function(){ 
-  score3P1.classList.remove('possible'); 
-  score3P1.classList.add('confirm'); 
-  score3P1.classList.remove('mogelijkeDrieën'); 
+  dices3.classList.remove('possible'); 
+  dices3.classList.add('confirm'); 
+  dices3.classList.remove('mogelijkeDrieën'); 
   document.querySelector('.dobbelsteenpunten3').classList.remove('dobbelsteenpunten3'); 
   turnfunction();
  
   }); 
   document.querySelector('.dobbelsteenpunten4').addEventListener('click', function(){ 
-  score4P1.classList.remove('possible'); 
-  score4P1.classList.add('confirm'); 
-  score4P1.classList.remove('mogelijkeVieren'); 
+  dices4.classList.remove('possible'); 
+  dices4.classList.add('confirm'); 
+  dices4.classList.remove('mogelijkeVieren'); 
   document.querySelector('.dobbelsteenpunten4').classList.remove('dobbelsteenpunten4'); 
   turnfunction();
  
   
   }); 
   document.querySelector('.dobbelsteenpunten5').addEventListener('click', function(){ 
-  score5P1.classList.remove('possible'); 
-  score5P1.classList.add('confirm'); 
-  score5P1.classList.remove('mogelijkeVijfen'); 
-  document.querySelector('.dobbelsteenpunten5').classList.remove('dobbelsteenpunten5'); 
+  dices5.classList.remove('possible'); 
+  dices5.classList.add('confirm'); 
+  dices5.classList.remove('mogelijkeVijfen'); 
+  document.querySelector('.dobbelsteenpunten5').classList.remove('dobbelsteenpunten5');
   turnfunction();
  
   }); 
   document.querySelector('.dobbelsteenpunten6').addEventListener('click', function(){ 
-  score6P1.classList.remove('possible'); 
-  score6P1.classList.add('confirm'); 
-  score6P1.classList.remove('mogelijkeZessen'); 
+ dices6.classList.remove('possible'); 
+ dices6.classList.add('confirm'); 
+ dices6.classList.remove('mogelijkeZessen'); 
   document.querySelector('.dobbelsteenpunten6').classList.remove('dobbelsteenpunten6'); 
   turnfunction();
  
@@ -394,79 +388,65 @@ rollButton.addEventListener('click',function(){
   document.querySelector('.toakPunten').addEventListener('click', function(){ 
   tok.classList.remove('possible');  
   tok.classList.add('confirm'); 
-  tok.classList.remove('tok'); 
+  tok.classList.remove('toak'); 
   document.querySelector('.toakPunten').classList.remove('toakPunten'); 
   turnfunction();
- // if(tok){ toak.textContent Dices[0] + Dices[1] + Dices[2] + Dices[3] + Dices[4]};
- 
   }); 
   document.querySelector('.CareePunten').addEventListener('click', function(){ 
-  p1CareeP.classList.remove('possible');  
-  p1CareeP.classList.add('confirm'); 
-  p1CareeP.classList.remove('careeM'); 
+  carree.classList.remove('possible');  
+  carree.classList.add('confirm'); 
+  carree.classList.remove('careeM'); 
   document.querySelector('.CareePunten').classList.remove('CareePunten'); 
   turnfunction();
-  //if(p1CareeP){Player1Scores[7] = Dices[0] + Dices[1] + Dices[2] + Dices[3] + Dices[4]}; 
+
  
   }); 
  
 
   document.querySelector('.FullHousePunten').addEventListener('click', function(){ 
-    p1KStraatP.classList.remove('possible'); 
-    p1KStraatP.classList.add('confirm'); 
-    p1KStraatP.classList.remove('FHM'); 
-    document.querySelector('.FullHousePunten').classList.remove('.FullHousePunten');
+    fullHouse.classList.remove('possible'); 
+    fullHouse.classList.add('confirm'); 
+    fullHouse.classList.remove('FHM'); 
+    document.querySelector('.FullHousePunten').classList.remove('FullHousePunten');
     turnfunction(); 
- // if(p1FullHouseP){Player1Scores[8] = 25;} 
+
 
  
   }); 
  
   document.querySelector('.KleineStraatPunten').addEventListener('click', function(){ 
-    p1FullHouseP.classList.remove('possible'); 
-    p1FullHouseP.classList.add('confirm'); 
-    p1FullHouseP.classList.remove('KSM') 
-    document.querySelector('.KleineStraatPunten').classList.remove('.KleineStraatPunten'); 
+  ks.classList.remove('possible'); 
+   ks.classList.add('confirm'); 
+   ks.classList.remove('KSM');
+    document.querySelector('.KleineStraatPunten').classList.remove('KleineStraatPunten'); 
     turnfunction();
-//  if(p1KStraatP){Player1Scores[9] = 30;} 
+
  
   }); 
   document.querySelector('.GroteStraatPunten').addEventListener('click', function(){ 
-  p1GStraatP.classList.remove('possible'); 
-  p1GStraatP.classList.add('confirm'); 
-  p1GStraatP.classList.remove('GSM'); 
+  gs.classList.remove('possible'); 
+  gs.classList.add('confirm'); 
+  gs.classList.remove('GSM'); 
   document.querySelector('.GroteStraatPunten').classList.remove('GroteStraatPunten'); 
   turnfunction();
- // if(p1GStraatP){Player1Scores[10] = 40;} 
+
  
   }); 
   document.querySelector('.YahtzeePunten').addEventListener('click', function(){ 
-  p1YahtzeeP.classList.remove('possible');  
-  p1YahtzeeP.classList.add('confirm'); 
-  p1YahtzeeP.classList.remove('yahtzeeM'); 
+  yahtzee.classList.remove('possible');  
+  yahtzee.classList.add('confirm'); 
+  yahtzee.classList.remove('yahtzeeM'); 
   document.querySelector('.YahtzeePunten').classList.remove('YahtzeePunten'); 
   turnfunction();
-//  if(p1YahtzeeP){Player1Scores[11] = 50};
+
  
   }); 
   document.querySelector('.ChancePunten').addEventListener('click', function(){    
-  p1ChanceP.classList.remove('possible');  
-  p1ChanceP.classList.add('confirm'); 
-  p1ChanceP.classList.remove('chanceM'); 
-  document.querySelector('.ChancePunten').classList.remove('.ChancePunten'); 
+  chance.classList.remove('possible');  
+  chance.classList.add('confirm'); 
+  chance.classList.remove('chanceM'); 
+  document.querySelector('.ChancePunten').classList.remove('ChancePunten'); 
     turnfunction();
- // Player1Scores[12] = Dices[0] + Dices[1] + Dices[2] + Dices[3] + Dices[4]; 
+
  
-  }); 
-
-
-
-
-
-
-
-
-
-
-
-
+  });  
