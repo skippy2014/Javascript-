@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Yahtzee</title>
+  </head>
+  <body>
+    <div class="informatie1">
+      <h3 id="beurt">Pogingen over: 3</h3>
+      <button id="roll-nog-een-keer">Rol nog een keer</button>
+    </div>
+    <div class="bord">
+      <div class="dobbelsteenN1">
+        <img class="dobbelsteen1 notSelected Dobbelsteen" src="Dobbelsteen0.png"/>
+      </div>
+      <div class="dobbelsteenN2" >
+        <img class="dobbelsteen2 notSelected  Dobbelsteen" src="Dobbelsteen0.png"/>
+      </div>
+      <div class="dobbelsteenN3">
+        <img class="dobbelsteen3 notSelected  Dobbelsteen" src="Dobbelsteen0.png"/>
+      </div>
+      <div class="dobbelsteenN4">
+        <img class="dobbelsteen4 notSelected  Dobbelsteen" src="Dobbelsteen0.png" />
+      </div>
+      <div class="dobbelsteenN5">
+        <img class="dobbelsteen5 notSelected  Dobbelsteen" src="Dobbelsteen0.png"/>
+      </div>
+    </div>
+    <div class="boxL">
+        <div class="extra-info">
+          <div class="punten-informatie">
+            <div class="informatie">
+              <strong> <p>puntentelling helft 1</p></strong>
+            </div>
+         
+           
+            
+          </div>
+          <div class="punten1 puntenflex">
+            <div class="dobbelsteenPunten">
+              <p>Enen</p>
+              <img class="fotoDobbelsteen" src="Dobbelsteen1.png" />
+            </div>
+            <div class="punten">
+              <p>Tel de enen</p>
+            </div>
+            <div class="dobbelsteenpunten1">
+              <p class="mogelijkeEnen possible">0</p>
+            </div>
+          </div>
+          <div class="punten2 puntenflex">
+            <div class="dobbelsteenPunten">
+              <p>Tweeën</p>
+              <img class="fotoDobbelsteen" src="Dobbelsteen2.png" />
+            </div>
+            <div class="punten">
+              <p>Tel de tweeën</p>
+            </div>
+            <div class="dobbelsteenpunten2">
+              <p class="mogelijkeTweeën possible">0</p>
+            </div>
+          </div>
+          <div class="punten3 puntenflex">
+            <div class="dobbelsteenPunten">
+              <p>Drieën</p>
+              <img class="fotoDobbelsteen" src="Dobbelsteen3.png" />
+            </div>
+            <div class="punten">
+              <p>Tel de drieën</p>
+            </div>
+            <div class="dobbelsteenpunten3">
+              <p class="mogelijkeDrieën possible">0</p>
+            </div>
+          </div>
+          <div class="punten4 puntenflex">
+            <div class="dobbelsteenPunten">
+              <p>Vieren</p>
+              <img class="fotoDobbelsteen" src="Dobbelsteen4.png" />
+            </div>
+            <div class="punten">
+              <p>Tel de vieren</p>
+            </div>
+            <div class="dobbelsteenpunten4">
+              <p class="mogelijkeVieren possible">0</p>
+            </div>
+          </div>
+          <div class="punten5 puntenflex">
+            <div class="dobbelsteenPunten">
+              <p>Vijfen</p>
+              <img class="fotoDobbelsteen" src="Dobbelsteen5.png" />
+            </div>
+            <div class="punten">
+              <p>Tel de vijfen</p>
+            </div>
+            <div class="dobbelsteenpunten5">
+              <p class="mogelijkeVijfen possible">0</p>
+            </div>
+          </div>
+          <div class="punten6 puntenflex">
+            <div class="dobbelsteenPunten">
+              <p>Zessen</p>
+              <img class="fotoDobbelsteen" src="Dobbelsteen6.png" />
+            </div>
+            <div class="punten">
+              <p>Tel de zessen</p>
+            </div>
+            <div class="dobbelsteenpunten6">
+              <p class="mogelijkeZessen possible">0</p>
+            </div>
+          </div>
+          <div class="punten1 puntenflex">
+            <div class="puntenTot-punten">
+              <p>Totaal aantal punten</p>
+            </div>
+            <div class="dobbelsteenpunten1">
+              <p class="definitievePunten1 ">0</p>
+            </div>
+          </div>
+          <div class="bonuspunten puntenflex">
+            <div class="punten">
+              <p>extra punten</p>
+              <p>totaal ≥ 63</p>
+            </div>
+            <div class="punten">
+              <p>35 punten</p>
+            </div>
+            <div class="puntenBonus puntenflex">
+              <p class="puntenBonusDefinitief">0</p>
+            </div>
+          </div>
+          <div class="totalePunten1 puntenflex">
+            <div class="puntenTot-punten">
+              <p>Totaal aantal punten</p>
+              <p>Helft 1</p>
+            </div>
+            <div class="bestAantalpunten1 puntenflex">
+              <p class="bestAantalpunten1Definitief">0</p>
+            </div>
+          </div>
+       
+  
+       
+         
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="boxR">
+    <div class="punten-informatie">
+  <div class="informatie">
+     <p><strong>puntentelling helft 2</strong></p>
+        <div class="toakPunten puntenflex">
+          <div class="punten">
+            <p>Three of a kind</p>
+            <p>3 dezelfde</p>
+          </div>
+          <div class="punten">
+            <p>Totaal v.d. stenen</p>
+          </div>
+          <div class="toakPunten puntenflex">
+            <p class="toak possible">0</p>
+          </div>
+        </div>
+        <div class="Caree puntenflex">
+          <div class="punten">
+            <p>Caree</p>
+            <p>4 dezelfde</p>
+          </div>
+          <div class="punten">
+            <p>Totaal v.d stenen</p>
+          </div>
+          <div class="CareePunten puntenflex">
+            <p class="careeM possible">0</p>
+          </div>
+        </div>
+        <div class="FullHouse puntenflex">
+          <div class="punten">
+            <p>Full House</p>
+            <p>3 + 2 dezelfde</p>
+          </div>
+          <div class="punten">
+            <p>25 punten</p>
+          </div>
+          <div class="FullHousePunten puntenflex" >
+            <p class="possible FHM">0</p>
+          </div>
+        </div>
+        <div class="KleineStraatPunten puntenflex">
+          <div class="punten">
+            <p>Kleine straat</p>
+            <p>4 achter elkaar</p>
+          </div>
+          <div class="punten">
+            <p>30 punten</p>
+          </div>
+          <div class="KleineStraatPunten puntenflex">
+            <p class="possible KSM">0</p>
+          </div>
+        </div>
+        <div class="GroteStraatPunten puntenflex">
+          <div class="punten">
+            <p>Grote straat</p>
+            <p>5 achter elkaar</p>
+          </div>
+          <div class="punten">
+            <p>40 punten</p>
+          </div>
+          <div class="GroteStraatPunten puntenflex">
+            <p class="possible GSM">0</p>
+          </div>
+        </div>
+        <div class="YahtzeePunten puntenflex">
+          <div class="punten">
+            <p>Yahtzee</p>
+            <p>5 dezelfde</p>
+          </div>
+          <div class="punten">
+            <p>50 punten</p>
+          </div>
+          <div class="YahtzeePunten puntenflex">
+            <p class="possible yahtzeeM ">0</p>
+          </div>
+        </div>
+        <div class="ChancePunten puntenflex">
+          <div class="punten">
+            <p>Chance</p>
+          </div>
+          <div class="punten">
+            <p>Totaal v.d stenen</p>
+          </div>
+          <div class="ChancePunten puntenflex">
+            <p class="possible chanceM">0</p>
+          </div>
+        </div>
+        <div class="bestePunten2 puntenflex">
+          <div class="puntenTot-punten">
+            <p>Totaal aantal punten</p>
+            <p>Helft 2</p>
+          </div>
+          <div class="puntenHelft2 puntenflex">
+            <p class="definitievePunten2">0</p>
+          </div>
+        </div>
+        <div class="totalePunten puntenflex">
+          <div class="puntenTot-punten">
+            <p>Totaal aantal punten</p>
+            <p>Totaal helft 1 + helft 2</p>
+          </div>
+          <div class="totaledobbelsteenpunten puntenflex">
+            <p class="definitievePunten">0</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="javascript.js"></script>
+  </body>
+</html>

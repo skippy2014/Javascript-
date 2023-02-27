@@ -1,0 +1,190 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+
+}
+.informatie1 {
+  width: 100%;
+  height: 15vh;
+  background-color: rgb(255, 255, 255);
+}
+.bord {
+  position: absolute;
+  left: 23vw;
+  top: 15vh;
+  width: 55%;
+  height: 80%;
+  border-radius: 5%;
+  background-color: rgb(0, 100, 0);
+  border: solid 1vw grey;
+  border-bottom: 1%;
+}
+
+.boxL ,
+.boxR  {
+ 
+  width: 20%;
+  height: 42%;
+  border: solid 0.5vw grey;
+
+
+}
+
+.boxL {
+  position: absolute;
+  left: 0;
+  top: 10vh;
+  text-align: center;
+}
+
+.boxR {
+  position: absolute;
+  right: 0;
+  top: 10.5vh;
+  text-align: center;
+  height:40.5%;
+}
+
+.fotoDobbelsteen {
+  width: 40px;
+  height: 40px;
+
+  margin-left: 30px;
+}
+
+.dobbelsteenPunten {
+  display: flex;
+  height: 40px;
+  border-top: black solid 1px;
+  background-color: #ffffff;
+  width: 100%;
+}
+
+.boxL div,
+.boxR div {
+  border: solid 1px black;
+
+}
+
+.puntenflex {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.puntenflex div {
+  width: 1fr;
+}
+
+.boxL,
+.boxR {
+  background-color: rgb(255, 255, 255);
+  width: 21vw;
+
+  border: solid 0.5vw grey;
+
+}
+
+.puntenflex div {
+  width: 7vw;
+  text-align: center;
+}
+
+.totalePunten div,
+.punten1 div,
+.totalePunten1 div,
+.bestePunten2 div {
+  width: 10vw;
+}
+
+.confirmed {
+  color: black;
+}
+
+.possible {
+  color: red;
+  text-align: center;
+}
+
+#beurt{
+  text-align: center;
+  font-size: 5vh;
+
+}
+
+.Dobbelsteen {
+  width: 5vw;
+  height: 10vh;
+}
+
+.dobbelsteen1{
+  position: relative;
+  margin-top:10%;
+  left:25%;
+  }
+
+  .dobbelsteen2{
+    position: relative;
+    top:40%;
+    left:75%;
+    }
+
+    .dobbelsteen3{
+      position: relative;
+      top:40%;
+      left:25%;
+      }
+
+      .dobbelsteen4{
+        position: relative;
+        top:40%;
+        left:75%;
+        }
+
+        .dobbelsteen5{
+          position: relative;
+          top:40%;
+          left:25%;
+          }
+
+          #roll-nog-een-keer{
+            width: 10vw;
+            height: 6vh;
+            font-size:20px;
+            border-radius: 20px;
+           margin-left:45vw;
+           border-color: rgb(14, 14, 148);
+           background-color: white;
+           box-shadow: 0 9px #999;
+          }
+
+          #roll-nog-een-keer:hover{
+            background-color: rgb(145, 144, 144);
+          }
+
+          #roll-nog-een-keer:active{
+            background-color: rgb(34, 68, 219);
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+          }
+
+          .hidden{
+            visibility: hidden;
+          }
+
+          
+      
+          .Dobbelsteen{
+            border:solid blue 5px;
+            transition: border 80ms;
+          }
+
+          .Dobbelsteen:hover{
+            border:solid lightskyblue 5px;
+          }
+
+          .notSelected{
+            border:none;
+          }
