@@ -278,7 +278,6 @@ rollButton.addEventListener('click',function(){
   totalescore1wb.textContent = Number(totaleScore1.textContent) + Number(bonus.textContent);
   Totaal.textContent = Number(totalescore1wb.textContent) + Number(totaleScore2.textContent);
  
- 
   
  
 
