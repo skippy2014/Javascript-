@@ -193,10 +193,10 @@ function GstraatFunction(diceScore){
       }
     } 
   }
-  if (Gstraat){
+  if (Gstraat && gs.classList.contains('possible')){
     diceScore.textContent=punten; 
-  } else {
-    diceScore = '0';
+  } else if(!Gstraat && gs.classList.contains('possible')) { 
+    diceScore.textContent ='0';
   }
 }
 
